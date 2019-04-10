@@ -21,6 +21,14 @@ NEWSPIDER_MODULE = 'propertyguru.spiders'
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
+ITEM_PIPELINES = ['propertyguru.pipelines.MongoDBPipeline' ]
+
+#configure mongo db
+MONGODB_SERVER = "localhost"
+MONGODB_PORT = 27017
+MONGODB_DB = "propertyguru"
+MONGODB_COLLECTION = "property"
+
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
