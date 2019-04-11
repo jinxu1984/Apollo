@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for propertyguru project
+# Scrapy settings for nestia project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,19 +9,17 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'propertyguru'
+BOT_NAME = 'nestia'
 
-SPIDER_MODULES = ['propertyguru.spiders']
-NEWSPIDER_MODULE = 'propertyguru.spiders'
+SPIDER_MODULES = ['nestia.spiders']
+NEWSPIDER_MODULE = 'nestia.spiders'
 
 
-ITEM_PIPELINES = { 
-    'propertyguru.pipelines.JsonWriterPipeline' : 300, 
-}
+# Crawl responsibly by identifying yourself (and your website) on the user-agent
+#USER_AGENT = 'nestia (+http://www.yourdomain.com)'
 
-# SPIDER_MIDDLEWARES = {
-#    'propertyguru.middlewares.UserAgentMiddleware': 543,
-# }
+# Obey robots.txt rules
+ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -46,12 +44,17 @@ ITEM_PIPELINES = {
 #   'Accept-Language': 'en',
 #}
 
+# Enable or disable spider middlewares
+# See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
+#SPIDER_MIDDLEWARES = {
+#    'nestia.middlewares.NestiaSpiderMiddleware': 543,
+#}
+
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
-DOWNLOADER_MIDDLEWARES = {
-    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
-    'scrapy_user_agents.middlewares.RandomUserAgentMiddleware': 400,
-}
+#DOWNLOADER_MIDDLEWARES = {
+#    'nestia.middlewares.NestiaDownloaderMiddleware': 543,
+#}
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
@@ -62,7 +65,7 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'propertyguru.pipelines.PropertyguruPipeline': 300,
+#    'nestia.pipelines.NestiaPipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)

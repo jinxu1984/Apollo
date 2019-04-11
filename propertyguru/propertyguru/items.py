@@ -8,8 +8,15 @@
 from scrapy import Item, Field
 
 
-class Property(Item):
+class PropertyItem(Item):
     listing_id = Field()
+    number_of_beds = Field()
+    number_of_baths = Field()
+    area = Field()
+    price = Field()
+    price_unit = Field()
+    address = Field()
+    postal_code = Field()
     property_type = Field()
     tenure = Field()
     psf = Field()
@@ -21,17 +28,9 @@ class Property(Item):
     furnishing = Field()
     top = Field()
     current_tenanted = Field()
-    number_of_beds = Field()
-    number_of_baths = Field()
-    area = Field()
-    price = Field()
-    price_unit = Field()
-    address = Field()
-    postal_code = Field()
     total_units = Field()
     key_features = Field()
     Facilities = Field()
-
 
 class Agent(Item):
     agent_name = Field()
