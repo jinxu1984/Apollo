@@ -5,10 +5,25 @@
 # See documentation in:
 # https://doc.scrapy.org/en/latest/topics/items.html
 
-import scrapy
+from scrapy import Item, Field
 
 
-class NestiaItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class PropertyItem(Item):
+    property_id = Field()
+    price = Field()
+    number_of_beds = Field()
+    number_of_baths = Field()
+    area = Field()
+    price_unit = Field()
+    project_type = Field()
+    project = Field()
+    district = Field()
+    top = Field()
+    tenure = Field()
+    furnishing = Field()
+    address = Field()
+    posted_on = Field()
+    description = Field()
+    indoor_features = Field()
+    outdoor_features = Field()
+    special_features = Field()
