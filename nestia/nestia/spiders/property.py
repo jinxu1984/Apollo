@@ -9,19 +9,17 @@ class PropertySpider(scrapy.Spider):
     name = 'PropertySpider'
     allowed_domains = ['nestia.com']
     start_urls = [
-        'https://property.nestia.com/webapi/sale/v4.6/sales?price_min=100000&floor_area_min=250&order_by=1&offset=0&limit=10',
+        'https://property.nestia.com/webapi/sale/v4.6/sales?price_min=100000&floor_area_min=250&order_by=1&offset=0&limit=100',
     ]
 
     def __init__(self):
-        self.limit = 10
+        self.limit = 100
         self.offset = 0
 
     def parse(self, response):
         property_list = json.loads(response.body)
 
-        for item in property_list:
-            #property_details_url = 'https://property.nestia.com/for-sale/' + item["url_address"] + '/' + str(item["detail_id"])
-            
+        for item in property_list:        
             propertyItem = PropertyItem()
 
             propertyItem['property_id'] = item['detail_id']
@@ -43,21 +41,8 @@ class PropertySpider(scrapy.Spider):
             propertyItem['scraped_date'] = datetime.datetime.now
 
             yield propertyItem
-              
-            #yield scrapy.Request(property_details_url, callback=self.parse_property, meta={'propertyItem': propertyItem})
         
         if len(property_list) == self.limit:
-            self.offset += 10
+            self.offset += 100
             next_property_list_url = 'https://property.nestia.com/webapi/sale/v4.6/sales?price_min=100000&floor_area_min=250&order_by=1&offset=' + str(self.offset) + '&limit=' +  str(self.limit) 
             return scrapy.Request(next_property_list_url, callback=self.parse)
-       
-    # def parse_property(self, response):
-    #     print(response.url)
-    #     propertyItem = response.meta['propertyItem']
-    
-    #     propertyItem['address'] =  response.xpath('//div[@class="info"]/div[@class="item"][6]/span[@class="con"]/text()').extract()[0]
-    #     propertyItem['indoor_features'] = response.xpath('//div[@class="m-amenities-item"][1]/div/ul/li/span/text()').extract()
-    #     propertyItem['outdoor_features'] = response.xpath('//div[@class="m-amenities-item"][2]/div/ul/li/span/text()').extract()
-    #     propertyItem['special_features'] = response.xpath('//div[@class="m-amenities-item"][3]/div/ul/li/span/text()').extract()
-
-    #     return propertyItem
