@@ -16,8 +16,9 @@ class PropertyItem(Item):
     area = Field()
     price_unit = Field()
     project_type = Field()
-    project = Field()
-    district = Field()
+    project_id = Field()
+    project_name = Field()
+    district_id = Field()
     top = Field()
     tenure = Field()
     furnishing = Field()
@@ -28,3 +29,6 @@ class PropertyItem(Item):
     outdoor_features = Field()
     special_features = Field()
     scraped_date = Field()
+    latitude = Field()
+    longitude = Field()
+
