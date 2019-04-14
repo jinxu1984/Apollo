@@ -27,3 +27,4 @@ class PropertyItem(Item):
     indoor_features = Field()
     outdoor_features = Field()
     special_features = Field()
+    scraped_date = Field()
