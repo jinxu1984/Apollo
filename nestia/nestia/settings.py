@@ -15,7 +15,7 @@ SPIDER_MODULES = ['nestia.spiders']
 NEWSPIDER_MODULE = 'nestia.spiders'
 
 ITEM_PIPELINES = { 
-    'nestia.pipelines.CsvWriterPipeline' : 300, 
+    'nestia.pipelines.CosmosPipeline' : 300, 
 }
 
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36'
@@ -52,6 +52,14 @@ DEFAULT_REQUEST_HEADERS = {
     'Accept-Encoding': 'gzip, deflate',
     'Accept-Language': 'en-US,*',
 }
+
+# Cosmos db settings:
+COSMOSDB_URL = 'mongodb://127.0.0.1:10250/?ssl=true'
+COSMOSDB_HOST = 'https://localhost:8081'
+COSMOSDB_NAME = 'localhost'
+COSMOSDB_KEY = 'C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw=='
+COSMOSDB_DATABASE = 'nestia'
+COSMOSDB_COLLECTION = 'sale_properties'
 
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html

@@ -9,6 +9,7 @@ from scrapy import Item, Field
 
 
 class SalePropertyItem(Item):
+    id = Field()
     property_id = Field()
     price = Field()
     number_of_beds = Field()
