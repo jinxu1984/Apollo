@@ -31,3 +31,4 @@ class PropertyItem(Item):
     latitude = Field()
     longitude = Field()
     agent = Field()
+    url = Field()
