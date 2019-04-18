@@ -2,11 +2,11 @@
 import scrapy
 import json
 from datetime import datetime
-from nestia.items import PropertyItem
+from nestia.items import SalePropertyItem
 
 
-class PropertySpider(scrapy.Spider):
-    name = 'PropertySpider'
+class SalePropertySpider(scrapy.Spider):
+    name = 'sale_property'
     allowed_domains = ['nestia.com']
 
     def __init__(self):
@@ -18,7 +18,7 @@ class PropertySpider(scrapy.Spider):
         items = json.loads(response.body)
 
         for item in items:
-            propertyItem = PropertyItem()
+            propertyItem = SalePropertyItem()
 
             propertyItem['property_id'] = item['detail_id']
             propertyItem['price'] = item['price']

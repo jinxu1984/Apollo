@@ -8,7 +8,7 @@
 from scrapy import Item, Field
 
 
-class PropertyItem(Item):
+class SalePropertyItem(Item):
     property_id = Field()
     price = Field()
     number_of_beds = Field()
