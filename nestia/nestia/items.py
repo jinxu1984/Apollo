@@ -29,6 +29,7 @@ class SalePropertyItem(Item):
     #outdoor_features = Field()
     #special_features = Field()
     scraped_date = Field()
+    last_updated_date = Field()
     latitude = Field()
     longitude = Field()
     mrts = Field()

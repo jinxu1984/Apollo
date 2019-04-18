@@ -6,6 +6,7 @@
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import json
 import csv
+from datetime import datetime
 from pymongo import MongoClient
 from scrapy.conf import settings
 from scrapy import signals
@@ -44,18 +45,23 @@ class JsonWriterPipeline(object):
 
 class CosmosPipeline(object):
 
-    def __init__(self):
-        self.db_name = settings['COSMOSDB_DATABASE']
-        self.collection_name = settings['COSMOSDB_COLLECTION']
+    def __init__(self): 
         self.client = MongoClient(settings['COSMOSDB_URL'])
 
     def open_spider(self, spider):
-        self.db = self.client[self.db_name]
-        self.db.authenticate(name=settings['COSMOSDB_NAME'],password=settings['COSMOSDB_KEY'])
+        db = self.client[settings['COSMOSDB_DATABASE']]
+        db.authenticate(name=settings['COSMOSDB_USERNAME'],password=settings['COSMOSDB_KEY'])
+        self.collection = db[settings['COSMOSDB_COLLECTION']]
 
     def close_spider(self, spider):
         self.client.close()
 
     def process_item(self, item, spider):
-        self.db[self.collection_name].insert_one(dict(item))
+        existingProperties = self.collection.find({},{ "property_id": item['property_id']})
+        
+        if len(existingProperties) == 1:
+            self.collection.update_one({ "property_id": item['property_id']}, { "$set": { "last_updated_date": datetime.now().strftime('%Y-%m-%d %H:%M:%S') } })
+        else:
+            self.collection.insert_one(dict(item))
+                   
         return item

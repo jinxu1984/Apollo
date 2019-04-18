@@ -10,7 +10,7 @@ class SalePropertySpider(scrapy.Spider):
     allowed_domains = ['nestia.com']
 
     def __init__(self):
-        self.limit = 100
+        self.limit = 5
         self.offset = 0
         self.start_urls = ['https://property.nestia.com/webapi/sale/v4.6/sales?price_min=100000&floor_area_min=250&order_by=1&offset=' + str(self.offset) + '&limit=' + str(self.limit), ]
 
@@ -40,6 +40,7 @@ class SalePropertySpider(scrapy.Spider):
             propertyItem['agent'] = item.get('user_profile', '')
             propertyItem['url'] = "https://property.nestia.com/for-sale/" + item['url_address'] + "/" + str(item['detail_id'])
             propertyItem['scraped_date'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            propertyItem['last_updated_date'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
             yield propertyItem
 
