@@ -32,13 +32,14 @@ class SalePropertySpider(scrapy.Spider):
             propertyItem['latitude'] = item['latitude']
             propertyItem['longitude'] = item['longitude']
             propertyItem['project_id'] = item.get('project_id', -1)
-            propertyItem['project_name'] = item.get('project_name', "")
+            propertyItem['project_name'] = item.get('project_name', '')
             propertyItem['tenure'] = item.get('tenure', -1)
             propertyItem['address'] = item['display_name']
             propertyItem['postal_code'] = item.get('postal_code', -1)
-            propertyItem['scraped_date'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            propertyItem['agent'] = item.get('user_profile', "")
+            propertyItem['mrts'] = item.get('mrts', '')
+            propertyItem['agent'] = item.get('user_profile', '')
             propertyItem['url'] = "https://property.nestia.com/for-sale/" + item['url_address'] + "/" + str(item['detail_id'])
+            propertyItem['scraped_date'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
             yield propertyItem
 

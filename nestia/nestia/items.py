@@ -30,5 +30,6 @@ class SalePropertyItem(Item):
     scraped_date = Field()
     latitude = Field()
     longitude = Field()
+    mrts = Field()
     agent = Field()
     url = Field()
