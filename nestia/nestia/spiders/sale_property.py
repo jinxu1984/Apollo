@@ -12,7 +12,7 @@ class SalePropertySpider(scrapy.Spider):
 
     def __init__(self, offset=0, *args, **kwargs):
         super(SalePropertySpider, self).__init__(*args, **kwargs)
-        self.offset = offset
+        self.offset = int(offset)
         self.limit = settings['SALE_PROPERTIES_LIMIT']
         self.start_urls = ['https://property.nestia.com/webapi/sale/v4.6/sales?price_min=100000&floor_area_min=250&order_by=8&offset=' +
                            str(self.offset) + '&limit=' + str(self.limit), ]
