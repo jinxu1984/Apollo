@@ -10,7 +10,7 @@ class SalePropertySpider(scrapy.Spider):
     name = 'sale_property'
     allowed_domains = ['nestia.com']
 
-    def __init__(self, offset=10500, *args, **kwargs):
+    def __init__(self, offset=0, *args, **kwargs):
         super(SalePropertySpider, self).__init__(*args, **kwargs)
         self.offset = offset
         self.limit = settings['SALE_PROPERTIES_LIMIT']
