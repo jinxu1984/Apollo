@@ -33,7 +33,7 @@ CONCURRENT_REQUESTS = 1
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 5
+DOWNLOAD_DELAY = 10
 RANDOMIZE_DOWNLOAD_DELAY = True
 
 # The download delay setting will honor only one of:
@@ -56,15 +56,17 @@ DEFAULT_REQUEST_HEADERS = {
 }
 
 # Cosmos db settings:
-COSMOSDB_URL = ''
+COSMOSDB_URL = 'mongodb://apollo1984:jlNDjCFRJLLh80k7aaGpyqLqhZ5XHXvPjjvKjp1GpdyIP8SHplQOZ6pGrH7FtHmEZ7J1CMjIkxYyIGSwhY6MQA==@apollo1984.documents.azure.com:10255/?ssl=true&replicaSet=globaldb'
 #COSMOSDB_HOST = 'https://localhost:8081'
 COSMOSDB_USERNAME = 'apollo1984'
-COSMOSDB_KEY = ''
+COSMOSDB_KEY = 'jlNDjCFRJLLh80k7aaGpyqLqhZ5XHXvPjjvKjp1GpdyIP8SHplQOZ6pGrH7FtHmEZ7J1CMjIkxYyIGSwhY6MQA=='
 COSMOSDB_DATABASE = 'nestia'
 COSMOSDB_COLLECTION = 'sale_properties'
 
 # sale properties:
-SALE_PROPERTIES_LIMIT = 100
+SALE_PROPERTIES_LIMIT = 500
+
+HTTPERROR_ALLOW_ALL = True
 
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
