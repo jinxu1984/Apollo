@@ -27,13 +27,12 @@ USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTM
 ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-CONCURRENT_REQUESTS = 1
+CONCURRENT_REQUESTS = 16
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 10
-RANDOMIZE_DOWNLOAD_DELAY = True
+DOWNLOAD_DELAY = 5
 
 # Disable cookies (enabled by default)
 COOKIES_ENABLED = True
@@ -47,12 +46,7 @@ DEFAULT_REQUEST_HEADERS = {
     'Accept-Language': 'en-US,*',
 }
 
-# Cosmos db settings:
-COSMOSDB_URL = ''
-COSMOSDB_USERNAME = 'apollo1984'
-COSMOSDB_KEY = ''
-COSMOSDB_DATABASE = 'nestia'
-COSMOSDB_COLLECTION = 'sale_properties'
+
 
 # sale properties:
 SALE_PROPERTIES_LIMIT = 500
