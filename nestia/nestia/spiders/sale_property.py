@@ -3,6 +3,7 @@ import scrapy
 import json
 from datetime import datetime
 from nestia.items import SalePropertyItem
+from scrapy.conf import settings
 
 
 class SalePropertySpider(scrapy.Spider):
@@ -10,8 +11,8 @@ class SalePropertySpider(scrapy.Spider):
     allowed_domains = ['nestia.com']
 
     def __init__(self):
-        self.limit = 5
         self.offset = 0
+        self.limit = settings['SALE_PROPERTIES_LIMIT']
         self.start_urls = ['https://property.nestia.com/webapi/sale/v4.6/sales?price_min=100000&floor_area_min=250&order_by=1&offset=' + str(self.offset) + '&limit=' + str(self.limit), ]
 
     def parse(self, response):
@@ -20,7 +21,7 @@ class SalePropertySpider(scrapy.Spider):
         for item in items:
             propertyItem = SalePropertyItem()
 
-            propertyItem['property_id'] = item['detail_id']
+            propertyItem['id'] = item['detail_id']
             propertyItem['price'] = item['price']
             propertyItem['number_of_beds'] = item['bedroom_type']
             propertyItem['number_of_baths'] = item['bathroom_type']
@@ -28,6 +29,7 @@ class SalePropertySpider(scrapy.Spider):
             propertyItem['price_unit'] = item['psf']
             propertyItem['project_type'] = item['property_type']
             propertyItem['district_id'] = item['district_id']
+            propertyItem['sub_district_id'] = item['sub_district_id']
             propertyItem['top'] = item['top']
             propertyItem['latitude'] = item['latitude']
             propertyItem['longitude'] = item['longitude']

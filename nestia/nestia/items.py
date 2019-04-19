@@ -10,7 +10,6 @@ from scrapy import Item, Field
 
 class SalePropertyItem(Item):
     id = Field()
-    property_id = Field()
     price = Field()
     number_of_beds = Field()
     number_of_baths = Field()
@@ -20,6 +19,7 @@ class SalePropertyItem(Item):
     project_id = Field()
     project_name = Field()
     district_id = Field()
+    sub_district_id = Field()
     top = Field()
     tenure = Field()
     address = Field()

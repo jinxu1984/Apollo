@@ -34,12 +34,14 @@ CONCURRENT_REQUESTS = 1
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
 DOWNLOAD_DELAY = 5
+RANDOMIZE_DOWNLOAD_DELAY = True
+
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED = False
+COOKIES_ENABLED = True
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
@@ -54,12 +56,15 @@ DEFAULT_REQUEST_HEADERS = {
 }
 
 # Cosmos db settings:
-COSMOSDB_URL = 'mongodb://127.0.0.1:10250/?ssl=true'
-COSMOSDB_HOST = 'https://localhost:8081'
-COSMOSDB_USERNAME = 'localhost'
-COSMOSDB_KEY = 'C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw=='
+COSMOSDB_URL = ''
+#COSMOSDB_HOST = 'https://localhost:8081'
+COSMOSDB_USERNAME = 'apollo1984'
+COSMOSDB_KEY = ''
 COSMOSDB_DATABASE = 'nestia'
 COSMOSDB_COLLECTION = 'sale_properties'
+
+# sale properties:
+SALE_PROPERTIES_LIMIT = 100
 
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
