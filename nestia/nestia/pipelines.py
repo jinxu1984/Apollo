@@ -62,7 +62,7 @@ class CosmosPipeline(object):
         self.client.close()
 
     def process_item(self, item, spider):
-        existingProperty = self.collection.find_one({}, {'id': item['id']})
+        existingProperty = self.collection.find_one({'id': item['id']}, { 'id': 1, 'address': 1})
 
         if existingProperty is not None:
             self.collection.update_one({'id': item['id'], 'district_id': item['district_id']}, {
