@@ -46,7 +46,13 @@ DEFAULT_REQUEST_HEADERS = {
     'Accept-Language': 'en-US,*',
 }
 
-
+# Cosmos db settings:
+COSMOSDB_URL = 'mongodb://127.0.0.1:10250/?ssl=true'
+COSMOSDB_HOST = 'https://localhost:8081'
+COSMOSDB_USERNAME = 'localhost'
+COSMOSDB_KEY = 'C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw=='
+COSMOSDB_DATABASE = 'nestia'
+COSMOSDB_COLLECTION = 'sale_properties'
 
 # sale properties:
 SALE_PROPERTIES_LIMIT = 500
