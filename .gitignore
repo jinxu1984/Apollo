@@ -103,3 +103,13 @@ venv.bak/
 # mypy
 .mypy_cache/
 nestia/output.csv
+
+.DS_Store
+
+terraform/k8s/.terraform.lock.hcl
+
+terraform/k8s/.terraform/providers/registry.terraform.io/hashicorp/azurerm/2.66.0/darwin_amd64/terraform-provider-azurerm_v2.66.0_x5
+
+terraform/k8s/terraform.tfstate
+
+terraform/k8s/terraform.tfstate.backup
