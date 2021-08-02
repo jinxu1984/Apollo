@@ -6,18 +6,8 @@ metadata:
     app: eshop
     component: rabbitmq
 spec:
-  type: NodePort
   ports:
-    - name: amqp
-      port: 5672
-      targetPort: 5672
-      protocol: TCP
-      nodePort: 31111
-    - name: management
-      protocol: TCP
-      port: 15672
-      targetPort: 15672
-      nodePort: 31112
+    - port: 5672
   selector:
     app: eshop
     component: rabbitmq
