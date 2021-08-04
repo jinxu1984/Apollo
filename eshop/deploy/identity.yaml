@@ -25,6 +25,7 @@ spec:
             value: "Server=sql-data;Initial Catalog=Microsoft.eShopOnContainers.Services.IdentityDb;User Id=sa;Password=Pass@word"
           - name: IsClusterEnv
             value: "True"
+          
         resources:
           limits:
             memory: "128Mi"
