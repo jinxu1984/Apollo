@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: identity
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eshop
+      component: identity
+  template:
+    metadata:
+      labels:
+        app: eshop
+        component: identity
+    spec:
+      containers:
+      - name: identity
+        image: eshop/identity.api
+        imagePullPolicy: Always
+        env:
+          - name: ASPNETCORE_URLS
+            value: http://0.0.0.0:80/identity
+          - name: ConnectionString
+            value: "Server=sql-data;Initial Catalog=Microsoft.eShopOnContainers.Services.IdentityDb;User Id=sa;Password=Pass@word"
+          - name: IsClusterEnv
+            value: "True"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
